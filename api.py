@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from typing import List
 from utils import base64opencv
 from pydantic import BaseModel
-from froth_models import color
+from froth_models import color, ncenters
 
 app = FastAPI()
 
@@ -87,12 +87,16 @@ async def get_froth_count(data: SingleImage):
     Returns:
         Bubbles count: int
     """
-
+    
     image = base64opencv(data.image)
+    
+    image = ncenters.image_preproc(image)
+    
+    ans = ncenters.find_centers(image)
 
     # PROCESS
 
-    ans = 100
+    #ans = 100
 
     return JSONResponse(content={'count': ans})
 
