@@ -49,4 +49,4 @@ def find_centers(p, threshold=0.9):
         dx = d[0]
         dy = d[1]
     v = round(np.sqrt(dx*dx+dy*dy),1)
-return v, (dx, dy)
+    return v, (dx, dy)
