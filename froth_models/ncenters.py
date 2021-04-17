@@ -43,7 +43,8 @@ def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
       dx = 0
       dy = 0
   else:
-      d = np.median(d, axis=0).astype(np.int) # берем медиану всех смещений, чтобы уменьшить вероятность ошибки
+      #d = np.median(d, axis=0).astype(np.int) # берем медиану всех смещений, чтобы уменьшить вероятность ошибки
+      d = np.median(d, axis=0).astype(int)
       # далее выкидываем
 
       dx = d[0]
