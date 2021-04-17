@@ -70,10 +70,12 @@ async def get_froth_speed(data: Images):
     images = data.images
     image1 = base64opencv(images[0])
     image2 = base64opencv(images[1])
+    
+    ans = ncenters.find_directions(image1, image2)[0]
 
     # PROCESS
 
-    ans = (3/5, 4/5)
+    #ans = (3/5, 4/5)
 
     return JSONResponse(content={'speed': ans})
 
