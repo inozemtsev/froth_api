@@ -24,29 +24,29 @@ def find_centers(p, threshold=0.9):
             centers.append((x+w//2, y+h//2))    
     return sorted(centers)
 
- def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
-    
-    img1 = image_preproc(img1)
-    img2 = image_preproc(img2)
-    
-    prev = find_centers(img1)
-    now = find_centers(img2)
-    
-    d = []
-    
-    for x in now:
-        for y in prev:
-            if y[0]-threshold<x[0]<y[0]+threshold and y[1]-threshold<x[1]<y[1]+threshold:
-                d.append([x[0]-y[0],x[1]-y[1]])         
-    d = np.array(d) 
-    if len(d)==0: #если не нашел объектов, которые сдвинулись на нужную величину пикселей (15)
-        dx = 0
-        dy = 0
-    else:
-        d = np.median(d, axis=0).astype(np.int) # берем медиану всех смещений, чтобы уменьшить вероятность ошибки
-        # далее выкидываем
+def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
+  
+  img1 = image_preproc(img1)
+  img2 = image_preproc(img2)
 
-        dx = d[0]
-        dy = d[1]
-    v = round(np.sqrt(dx*dx+dy*dy),1)
-    return v, (dx, dy)
+  prev = find_centers(img1)
+  now = find_centers(img2)
+
+  d = []
+
+  for x in now:
+      for y in prev:
+          if y[0]-threshold<x[0]<y[0]+threshold and y[1]-threshold<x[1]<y[1]+threshold:
+              d.append([x[0]-y[0],x[1]-y[1]])         
+  d = np.array(d) 
+  if len(d)==0: #если не нашел объектов, которые сдвинулись на нужную величину пикселей (15)
+      dx = 0
+      dy = 0
+  else:
+      d = np.median(d, axis=0).astype(np.int) # берем медиану всех смещений, чтобы уменьшить вероятность ошибки
+      # далее выкидываем
+
+      dx = d[0]
+      dy = d[1]
+  v = round(np.sqrt(dx*dx+dy*dy),1)
+  return v, (dx, dy)
