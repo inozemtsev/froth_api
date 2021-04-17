@@ -6,7 +6,6 @@ from collections import Counter
 from skimage.color import rgb2lab, deltaE_cie76
 import os
 
-%matplotlib inline
 
 def RGB2HEX(color):
     return "#{:02x}{:02x}{:02x}".format(int(color[0]), int(color[1]), int(color[2]))
