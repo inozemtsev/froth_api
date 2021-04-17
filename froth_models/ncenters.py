@@ -5,7 +5,7 @@ import os
 import matplotlib.pyplot as plt
 
 def image_preproc(image):
-  return cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+  return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 def find_centers(p, threshold=0.9):
     '''
