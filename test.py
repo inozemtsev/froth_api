@@ -6,7 +6,8 @@ import requests
 
 
 def test_base64():
-    frame = cv2.imread('trash/test.JPG')
+    #frame = cv2.imread('trash/test.JPG')
+    frame = cv2.imread('trash/F1_1_5_2.ts_f_3.jpg')
 
     encoded = opencvbase64(frame)
     decoded = base64opencv(encoded)
@@ -26,7 +27,8 @@ def test_endpoint(endpoint, data, host='localhost', port=8999, method='post'):
 if __name__ == '__main__':
     test_base64()
 
-    frame = cv2.imread('trash/test.JPG')
+    #frame = cv2.imread('trash/test.JPG')
+    frame = cv2.imread('trash/F1_1_5_2.ts_f_3.jpg')
     encoded = opencvbase64(frame)
 
     single_image = {'image': encoded}
