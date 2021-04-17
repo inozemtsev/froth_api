@@ -93,6 +93,8 @@ async def get_froth_count(data: SingleImage):
     image = ncenters.image_preproc(image)
     
     ans = len(ncenters.find_centers(image))
+    
+    print(ans)
 
     # PROCESS
 
