@@ -36,21 +36,27 @@ async def get_froth_color(data: SingleImage):
     return JSONResponse(content=ans)
 
 @app.post("/calculate_direction")
-async def get_froth_direction(data: SingleImage):
+#async def get_froth_direction(data: SingleImage):
+async def get_froth_direction(data: Images):
     """Calculates direction of froth
 
     Args:
-        image (str): image in base64 format
+        image1 (str): image in base64 format
+        image2 (str): image in base64 format
 
     Returns:
         Direction: two coordinates (x, y)
     """
 
-    image = base64opencv(data.image)
+    images = data.images
+    image1 = base64opencv(images[0])
+    image2 = base64opencv(images[1])
+    
+    ans = ncenters.find_directions(image1, image2)[1]
 
     # PROCESS
 
-    ans = (4/5, 3/5)
+    #ans = (4/5, 3/5)
 
     return JSONResponse(content={'direction': ans})
 
