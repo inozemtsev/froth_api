@@ -5,7 +5,9 @@ import os
 # import matplotlib.pyplot as plt
 
 def image_preproc(image):
-  return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+  gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+  gray_img = gray_img[0:gray_img.shape[0]//2,:]
+  return gray_img
 
 def find_centers(p, threshold=0.9):
     '''
@@ -45,6 +47,7 @@ def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
   else:
       #d = np.median(d, axis=0).astype(np.int) # берем медиану всех смещений, чтобы уменьшить вероятность ошибки
       d = np.median(d, axis=0).astype(int)
+      d = [int(i) for i in d]
       # далее выкидываем
 
       dx = d[0]
