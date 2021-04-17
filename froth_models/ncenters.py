@@ -6,7 +6,7 @@ import os
 
 def image_preproc(image):
   gray_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-  gray_img = gray_img[0:gray_img.shape[0]//2,:]
+  #gray_img = gray_img[0:gray_img.shape[0]//2,:]
   return gray_img
 
 def find_centers(p, threshold=0.9):
