@@ -23,7 +23,7 @@ def find_centers(p, threshold=0.9):
         if w>=3 and h>=3:
             centers.append((x+w//2, y+h//2))    
     return sorted(centers)
-
+  
 def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
   
   img1 = image_preproc(img1)
