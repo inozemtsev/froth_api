@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from typing import List
 from utils import base64opencv
 from pydantic import BaseModel
+from froth_models import color
 
 app = FastAPI()
 
@@ -25,10 +26,12 @@ async def get_froth_color(data: SingleImage):
         Top-n pairs (hex code, percentage)
     """
     image = base64opencv(data.image)
+    
+    ans = color.get_colors(color.get_image(image))
 
     # PROCESS
 
-    ans = [('#ff00ff', 25), ('#ffff00', 10), ('#00ffff', 5)]
+    #ans = [('#ff00ff', 25), ('#ffff00', 10), ('#00ffff', 5)]
 
     return JSONResponse(content=ans)
 
