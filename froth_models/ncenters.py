@@ -22,8 +22,7 @@ def find_centers(p, threshold=0.9):
         (x, y, w, h) = cv2.boundingRect(contour)
         if w>=3 and h>=3:
             centers.append((x+w//2, y+h//2))    
-    #return sorted(centers)
-    return len(centers)
+    return sorted(centers)
 
  def find_directions(img1, img2, threshold=30): # [[3333],[44444],[],[]]
     
