@@ -35,7 +35,7 @@ if __name__ == '__main__':
     color = test_endpoint('calculate_color', single_image)
     print(color)
 
-    direction = test_endpoint('calculate_direction', single_image)
+    direction = test_endpoint('calculate_direction', multiple)
     print(direction)
 
     speed = test_endpoint('calculate_speed', multiple)
