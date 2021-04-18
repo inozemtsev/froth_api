@@ -126,4 +126,4 @@ async def get_froth_status(data: SingleImage):
 
     ans = 10000
 
-    return JSONResponse(content={'count': ans})
+    return JSONResponse(content={'status': ans})
